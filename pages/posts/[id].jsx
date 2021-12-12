@@ -1,8 +1,8 @@
 // export async function getServerSideProps({ params }) {
-//   const req = await fetch(
+//   const res = await fetch(
 //     `https://jsonplaceholder.typicode.com/posts/${params.id}`
 //   );
-//   const data = await req.json();
+//   const data = await res.json();
 
 //   return {
 //     props: { post: data },
@@ -10,10 +10,10 @@
 // }
 
 export async function getStaticProps({ params }) {
-  const req = await fetch(
+  const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`
   );
-  const data = await req.json();
+  const data = await res.json();
 
   return {
     props: { post: data },
@@ -21,11 +21,13 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const req = await fetch(`https://jsonplaceholder.typicode.com/posts/`);
-  const data = await req.json();
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const data = await res.json();
 
   const paths = data.map((post) => {
-    return { params: { id: post.id.toString() } };
+    return {
+      params: { id: post.id.toString() },
+    };
   });
 
   return {
