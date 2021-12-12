@@ -19,9 +19,11 @@ export async function getStaticProps(context) {
 const Posts = ({ data }) => {
   return (
     <>
+      <h1 className={styles.title}>Posts</h1>
+      
       {data.map((item) => (
         <Link href={`/posts/${item.id}`}>
-          <div className={styles.pointer} key={item.id}>
+          <div className={styles.postsDiv} key={item.id}>
             <h4>{item.title}</h4>
             <p>{item.body}</p>
           </div>
