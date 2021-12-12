@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export async function getStaticProps(context) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   const data = await res.json();
@@ -17,10 +19,12 @@ const Posts = ({ data }) => {
   return (
     <>
       {data.map((item) => (
-        <div key={item.id}>
-          <h4>{item.title}</h4>
-          <p>{item.body}</p>
-        </div>
+        <Link href={`/posts/${item.id}`}>
+          <div key={item.id}>
+            <h4>{item.title}</h4>
+            <p>{item.body}</p>
+          </div>
+        </Link>
       ))}
     </>
   );
