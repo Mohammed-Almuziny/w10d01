@@ -37,7 +37,6 @@ export async function getStaticPaths() {
 }
 
 const Post = ({ post }) => {
-  console.log(post);
   return (
     <>
       <h4>{post.title}</h4>

@@ -20,10 +20,10 @@ const Posts = ({ data }) => {
   return (
     <>
       <h1 className={styles.title}>Posts</h1>
-      
+
       {data.map((item) => (
-        <Link href={`/posts/${item.id}`}>
-          <div className={styles.postsDiv} key={item.id}>
+        <Link href={`/posts/${item.id}`} key={item.id}>
+          <div className={styles.postsDiv}>
             <h4>{item.title}</h4>
             <p>{item.body}</p>
           </div>
